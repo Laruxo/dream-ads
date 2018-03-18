@@ -1,0 +1,15 @@
+[[source]]
+
+name = "pypi"
+verify_ssl = true
+url = "https://pypi.python.org/simple"
+
+
+[packages]
+
+Scrapy = "*"
+
+
+[dev-packages]
+
+A
