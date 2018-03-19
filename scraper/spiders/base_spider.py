@@ -3,8 +3,8 @@ import logging
 
 
 class BaseSpider(scrapy.Spider):
-    dont_cache_lists = False
-    dont_cache_items = False
+    dont_cache_lists = True
+    dont_cache_items = True
 
     urls = []
 
@@ -17,7 +17,7 @@ class BaseSpider(scrapy.Spider):
             )
 
     def closed(self, reason):
-        self.log('Spider closed. %s' % reason, logging.ERROR)
+        self.log('Spider closed. %s' % reason, logging.INFO)
 
     def extract_items(self, response):
         raise NotImplementedError('extract_items is not defined'.format(self.__class__.__name__))
