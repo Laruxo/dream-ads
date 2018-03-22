@@ -1,15 +1,15 @@
 [[source]]
 
-name = "pypi"
 verify_ssl = true
 url = "https://pypi.python.org/simple"
+name = "pypi"
 
 
 [packages]
 
-Scrapy = "*"
+scrapy = "*"
+tinydb = "*"
 
 
 [dev-packages]
 
-A

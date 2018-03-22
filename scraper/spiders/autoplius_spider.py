@@ -14,7 +14,6 @@ class AutopliusSpider(BaseSpider):
         ('Suzuki SV650', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=600&engine_capacity_to=750&make_date_from=2004&make_id%5B1610%5D=2184&make_id_list=1610&slist=421324377'),
         ('Suzuki Bandit 650', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=600&engine_capacity_to=800&make_date_from=2005&make_id%5B1610%5D=27683&make_id_list=1610&slist=421324377'),
         ('Suzuki GSX650F', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?engine_capacity_from=600&engine_capacity_to=750&make_date_from=2008&make_date_to=2013&category_id=3&make_id%5B1610%5D=2165&make_id_list=1610&slist=451862139'),
-        # ('Suzuki DL650', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_to=750&make_date_from=2004&make_id%5B1610%5D=2191&make_id_list=1610&slist=451862139'),
     ]
 
     def extract_items(self, response):
@@ -28,7 +27,12 @@ class AutopliusSpider(BaseSpider):
 
         error = container.css('.error .msg-subject::text').extract_first()
         if error is not None:
-            self.log('Ad is no longer active. Reason: %s. %s' % error % response.url, logging.ERROR)
+            self.log('Ad is no longer active. Reason: %s. %s' % (error, response.url), logging.ERROR)
+            return
+
+        sold = container.css('.is-sold-badge::text').extract_first()
+        if sold is not None:
+            self.log('Ad is no longer active. Reason: %s. %s' % (sold, response.url), logging.ERROR)
             return
 
         il = AdLoader()
@@ -44,7 +48,7 @@ class AutopliusSpider(BaseSpider):
             'year': container.css('tr:contains("Pagaminimo data") strong::text').re_first(r'^[\d]+'),
             'color': container.css('tr:contains("Spalva") strong::text').extract_first(),
             'description': container.css('.announcement-description').xpath('normalize-space()').extract_first(),
-            'location': container.css('.owner-location').xpath('normalize-space()').extract_first(),
+            'location': container.css('.owner-location').xpath('normalize-space()').re_first(r'^[^,]+'),
             'images': container.css('.announcement-media-gallery > .thumbnail::attr(style)').re(r'https:\/\/.+\.jpg'),
         })
 

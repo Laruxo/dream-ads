@@ -64,7 +64,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'scraper.pipelines.DeduplicationPipeline': 100,
+   'scraper.pipelines.JsonDeduplicationPipeline': 100,
+   # 'scraper.pipelines.SqlDeduplicationPipeline': 100,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -22,4 +22,4 @@ class Ad(Item):
     images = Field(input_processor=Identity(), output_processor=TakeFirst())
     created_at = Field()
     active = Field()
-    Ignored = Field()
+    ignored = Field()

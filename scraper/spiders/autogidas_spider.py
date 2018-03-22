@@ -1,4 +1,5 @@
 import logging
+import re
 from scraper.spiders.base_spider import BaseSpider
 from scraper.items.ad_loader import AdLoader
 
@@ -30,12 +31,14 @@ class AutogidasSpider(BaseSpider):
             self.log('Ad is no longer active %s' % response.url, logging.ERROR)
             return
 
+        typePrefix = re.escape(container.css('.left:contains("Tr. priemonės tipas") ~ .right::text').extract_first() or '')
+
         il = AdLoader()
         il.add_value(None, {
             'id': 'autogidas-' + ad_id,
             'link': response.url,
             'model': response.meta['model'],
-            'title': container.css('h1.title::text').extract_first(),
+            'title': container.css('h1.title::text').re_first(r'(?<=^%s).+' % typePrefix),
             'price': container.css('meta[itemprop="price"]::attr(content)').extract_first(),
             'mileage': container.css('.left:contains("Rida, km") ~ .right::text').re_first(r'[0-9]+'),
             'cubic': container.css('.left:contains("Darbinis tūris") ~ .right::text').re_first(r'[0-9]+'),
@@ -43,7 +46,7 @@ class AutogidasSpider(BaseSpider):
             'year': container.css('.left:contains("Metai") ~ .right::text').re_first(r'^[0-9]+'),
             'color': container.css('.left:contains("Spalva") ~ .right::text').extract_first(),
             'description': container.css('.comments').xpath('normalize-space()').extract_first(),
-            'location': container.css('.seller-location').xpath('normalize-space()').extract_first(),
+            'location': container.css('.seller-location').xpath('normalize-space()').re_first(r'^[^,]+'),
             'images': container.css('.photo > img:not([src="/static/images/vs_map.gif"])::attr(src)').extract(),
         })
 
