@@ -8,13 +8,9 @@ class AutogidasSpider(BaseSpider):
     name = 'autogidas'
     urls = [
         ('Kawasaki ER6', 'https://autogidas.lt/skelbimai/motociklai/?f_41=2009&f_1%5B1%5D=Kawasaki&f_model_14%5B1%5D=ER&f_133=600&f_134=750&s=509969086'),
-        ('Honda VFR800', 'https://autogidas.lt/skelbimai/motociklai/?f_41=2006&f_1%5B1%5D=Honda&f_model_14%5B1%5D=VFR&f_133=750&f_134=900&s=509969086'),
         ('Yamaha FZ6', 'https://autogidas.lt/skelbimai/motociklai/?f_1%5B1%5D=Yamaha&f_model_14%5B1%5D=FZ&f_41=2007&f_42=2010&f_133=550&f_134=650&s=509969086'),
         ('Yamaha XJ6', 'https://autogidas.lt/skelbimai/motociklai/?f_1%5B1%5D=Yamaha&f_model_14%5B1%5D=XJ&f_41=2009&f_133=550&f_134=650&s=509969086'),
         ('BMW F800ST', 'https://autogidas.lt/skelbimai/motociklai/?f_1%5B1%5D=BMW&f_model_14%5B1%5D=F&f_41=2006&f_133=550&f_134=900&s=509985610'),
-        ('Suzuki SV650', 'https://autogidas.lt/skelbimai/motociklai/?f_1%5B1%5D=Suzuki&f_model_14%5B1%5D=SV&f_41=2004&f_133=600&f_134=750&s=509969086'),
-        ('Suzuki Bandit 650', 'https://autogidas.lt/skelbimai/motociklai/?f_1%5B1%5D=Suzuki&f_model_14%5B1%5D=GSF+%2F+Bandit&f_41=2005&f_133=600&f_134=750&s=509969086'),
-        ('Suzuki GSX650F', 'https://autogidas.lt/skelbimai/motociklai/?f_41=2008&f_42=2013&f_1%5B1%5D=Suzuki&f_model_14%5B1%5D=GSX&f_1%5B2%5D=Suzuki&f_model_14%5B2%5D=GSX-F+%2F+Katana&f_133=600&f_134=750&s=509969086'),
     ]
 
     def extract_items(self, response):

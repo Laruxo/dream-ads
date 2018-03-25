@@ -8,12 +8,8 @@ class AutopliusSpider(BaseSpider):
     urls = [
         ('Kawasaki ER6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=600&engine_capacity_to=700&make_date_from=2009&make_id%5B1590%5D=2049_18710_25823&make_id_list=1590&slist=421324377'),
         ('Yamaha FZ6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=500&engine_capacity_to=750&make_date_from=2007&make_date_to=2010&make_id%5B1621%5D=2294&make_id_list=1621&slist=453446453'),
-        ('Honda VFR800', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=750&engine_capacity_to=1000&make_date_from=2006&make_id%5B1582%5D=1984&make_id_list=1582&slist=451862139'),
         ('Yamaha XJ6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=500&engine_capacity_to=750&make_date_from=2009&make_id%5B1621%5D=2291&make_id_list=1621&slist=421324377'),
         ('BMW F800ST', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=750&engine_capacity_to=900&make_date_from=2006&make_id%5B1563%5D=25947_25959&make_id_list=1563&slist=421324377'),
-        ('Suzuki SV650', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=600&engine_capacity_to=750&make_date_from=2004&make_id%5B1610%5D=2184&make_id_list=1610&slist=421324377'),
-        ('Suzuki Bandit 650', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=600&engine_capacity_to=800&make_date_from=2005&make_id%5B1610%5D=27683&make_id_list=1610&slist=421324377'),
-        ('Suzuki GSX650F', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?engine_capacity_from=600&engine_capacity_to=750&make_date_from=2008&make_date_to=2013&category_id=3&make_id%5B1610%5D=2165&make_id_list=1610&slist=451862139'),
     ]
 
     def extract_items(self, response):

@@ -7,17 +7,12 @@ class AutobilisSpider(BaseSpider):
     name = 'autobilis'
     urls = [
         ('Kawasaki ER6', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&make_id%5B%5D=7774&model_id%5B%5D=7782&year_from=2009&moto_engine_capacity_cubic_from=600&moto_engine_capacity_cubic_to=700'),
-        ('Honda VFR800', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&year_from=2006&moto_engine_capacity_cubic_from=750&moto_engine_capacity_cubic_to=1000&city=&year_to=&make_id%5B%5D=7645&model_id%5B%5D=7705'),
         ('Yamaha FZ6', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&make_id%5B%5D=8300&model_id%5B%5D=8312&model_id%5B%5D=8313&year_from=2007&moto_engine_capacity_cubic_from=530&moto_engine_capacity_cubic_to=650&city=&year_to=2010'),
         ('Yamaha XJ6', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&year_from=2009&moto_engine_capacity_cubic_from=530&moto_engine_capacity_cubic_to=650&city=&year_to=&make_id%5B%5D=8300&model_id%5B%5D=8357'),
         ('BMW F800ST', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&year_from=2006&moto_engine_capacity_cubic_from=750&moto_engine_capacity_cubic_to=1000&city=&year_to=&make_id%5B%5D=7360&model_id%5B%5D=7363'),
-        ('Suzuki SV650', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&year_from=2004&moto_engine_capacity_cubic_from=600&moto_engine_capacity_cubic_to=700&city=&year_to=&make_id%5B%5D=8155&model_id%5B%5D=8200'),
-        ('Suzuki Bandit 650', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&year_from=2005&moto_engine_capacity_cubic_from=600&moto_engine_capacity_cubic_to=700&city=&year_to=&make_id%5B%5D=8155&model_id%5B%5D=8160'),
-        ('Suzuki GSX650F', 'http://www.autobilis.lt/skelbimai/motociklai?category_id=14&order_by=price-asc&year_from=2008&moto_engine_capacity_cubic_from=600&moto_engine_capacity_cubic_to=700&city=&year_to=2013&make_id%5B%5D=8155&model_id%5B%5D=8176'),
     ]
 
     def extract_items(self, response):
-        # TODO
         return response.css('.search-rezult-content > a::attr(href)').extract()
 
     def next_page_url(self, response):

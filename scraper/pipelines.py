@@ -26,7 +26,7 @@ class JsonDeduplicationPipeline(object):
             if result['ignored']:
                 return
 
-            print('Updating item %s' % item['id'])
+            print('+- item %s' % item['id'])
             self.db.update({
                 'price': item.get('price'),
                 'mileage': item.get('mileage'),
@@ -36,7 +36,7 @@ class JsonDeduplicationPipeline(object):
 
             return item
 
-        print('Adding item %s' % item['id'])
+        print('++ item %s' % item['id'])
         item['active'] = True
         item['ignored'] = False
         item['created_at'] = current_date()

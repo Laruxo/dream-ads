@@ -7,7 +7,7 @@ name = "pypi"
 
 [packages]
 
-scrapy = "*"
+Scrapy = "*"
 tinydb = "*"
 
 
