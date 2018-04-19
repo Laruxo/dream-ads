@@ -19,8 +19,12 @@ class Ads(Resource):
         db = sqlite3.connect(DATABASE)
         db.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
         cur = db.cursor()
-        cur.execute('SELECT * FROM ads WHERE active = 1 AND ignored = 0')
-        result = cur.fetchall()
+        try:
+            cur.execute('SELECT * FROM ads WHERE active = 1 AND ignored = 0')
+            result = cur.fetchall()
+        except sqlite3.OperationalError:
+            print('DB is empty. Try running scraper first.')
+            result = []
         db.close()
         return result
 
