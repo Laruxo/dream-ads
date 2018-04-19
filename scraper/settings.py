@@ -64,8 +64,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'scraper.pipelines.JsonDeduplicationPipeline': 100,
-   # 'scraper.pipelines.SqlDeduplicationPipeline': 100,
+    #'scraper.pipelines.JsonDeduplicationPipeline': 100,
+   'scraper.pipelines.SqlDeduplicationPipeline': 100,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -89,6 +89,8 @@ HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS = ['no-store', 'no-cache', 'must-revalidate']
 
 RETRY_TIMES = 0
+
+LOG_LEVEL = 'ERROR'
 
 # Feed exports
 # FEED_URI = '%(name)s.json'

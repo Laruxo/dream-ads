@@ -6,8 +6,8 @@ from scraper.items.ad_loader import AdLoader
 class AutopliusSpider(BaseSpider):
     name = 'autoplius'
     urls = [
-        ('Kawasaki ER6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=600&engine_capacity_to=700&make_date_from=2009&make_id%5B1590%5D=2049_18710_25823&make_id_list=1590&slist=421324377'),
-        ('Yamaha FZ6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=500&engine_capacity_to=750&make_date_from=2007&make_date_to=2010&make_id%5B1621%5D=2294&make_id_list=1621&slist=453446453'),
+        ('Kawasaki ER6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=600&engine_capacity_to=700&make_date_from=2006&make_id%5B1590%5D=2049_18710_25823&make_id_list=1590&slist=421324377'),
+        ('Yamaha FZ6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=500&engine_capacity_to=750&make_date_from=2004&make_date_to=2010&make_id%5B1621%5D=2294&make_id_list=1621&slist=453446453'),
         ('Yamaha XJ6', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=500&engine_capacity_to=750&make_date_from=2009&make_id%5B1621%5D=2291&make_id_list=1621&slist=421324377'),
         ('BMW F800ST', 'https://autoplius.lt/skelbimai/motociklai-moto-apranga/motociklai?category_id=3&engine_capacity_from=750&engine_capacity_to=900&make_date_from=2006&make_id%5B1563%5D=25947_25959&make_id_list=1563&slist=421324377'),
     ]

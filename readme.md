@@ -1,11 +1,14 @@
-# Dream Ads Scraper
+# Dream Ads
 
-Using Scrapy
+Introducing:
+* Scrapy as Web Scraper
+* Flask as API
+* VueJs as Frontend
 
 ### Try it out
 ```
-$ pipenv install
-$ pipenv run scrapy crawl {autogidas|autoplius|mobile}
+$ docker-compose build
+$ docker-compose up -d
 ```
 
-Saving to SQLite DB in progress.
+Then visit `localhost:8080` for frontend or `localhost:5000/api` for API.

@@ -26,7 +26,6 @@ class JsonDeduplicationPipeline(object):
             if result['ignored']:
                 return
 
-            print('+- item %s' % item['id'])
             self.db.update({
                 'price': item.get('price'),
                 'mileage': item.get('mileage'),
@@ -69,9 +68,9 @@ class SqlDeduplicationPipeline(object):
             'ignored BOOLEAN NOT NULL DEFAULT 0'
             ')')
         cur.execute('UPDATE ads SET active = 0 WHERE id LIKE "%s"' % (spider.name + '-%'))
+        self.db.commit()
 
     def close_spider(self, spider):
-        self.db.commit()
         self.db.close()
 
     def process_item(self, item, spider):
@@ -86,23 +85,30 @@ class SqlDeduplicationPipeline(object):
             if result[1] == 1:
                 return
 
-            print('Updating item %s' % item['id'])
             cur.execute(
                 'UPDATE ads SET '
-                'price = :price, active = 1 '
+                'price = :price, mileage = :mileage, description = :description, images = :images, active = 1 '
                 'WHERE id = :id',
-                dict(item)
+                {
+                    'price': item.get('price'),
+                    'mileage': item.get('mileage'),
+                    'description': item.get('description'),
+                    'images': item.get('images'),
+                    'id': item.get('id')
+                }
             )
+            self.db.commit()
 
             return item
 
         # otherwise, add new item
-        print('Adding item %s' % item['id'])
+        print('+++ item %s' % item['id'])
         item['active'] = True
         item['created_at'] = current_date()
         keys = item.keys()
         columns = ', '.join(keys)
         placeholders = ':' + ', :'.join(keys)
         cur.execute('INSERT INTO ads (%s) VALUES (%s)' % (columns, placeholders), dict(item))
+        self.db.commit()
 
         return item

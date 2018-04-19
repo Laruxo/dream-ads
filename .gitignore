@@ -1,3 +1,5 @@
 pip-log.txt
 .scrapy/
 .idea/
+/ads.db
+/ads.json

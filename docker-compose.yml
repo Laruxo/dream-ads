@@ -1,0 +1,20 @@
+version: '3'
+services:
+  node:
+    build: ./frontend
+    user: node
+    working_dir: /var/www
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./frontend:/var/www
+    command: npm start
+
+  python:
+    build: ./app
+    working_dir: /var/www
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/var/www
+    command: app/app.py
