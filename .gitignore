@@ -3,3 +3,4 @@ pip-log.txt
 .idea/
 /ads.db
 /ads.json
+/frontend/

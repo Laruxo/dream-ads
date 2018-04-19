@@ -7,8 +7,7 @@ Introducing:
 
 ### Try it out
 ```
-$ docker-compose build
-$ docker-compose up -d
+$ docker-compose up
 ```
 
 Then visit `localhost:8080` for frontend or `localhost:5000/api` for API.

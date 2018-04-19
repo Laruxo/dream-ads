@@ -1,0 +1,4 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/Laruxo/dream-ads-frontend.git
+	branch = master
